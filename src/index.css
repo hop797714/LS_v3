@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Import modern fonts */
-@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@300;400;500;600;700&display=swap');
 
 /* Modern CSS Variables */
@@ -52,6 +52,19 @@ body {
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Curtain transition overlay */
+.curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1E2A78, #3B4B9A);
+  z-index: 9999;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
 /* Modern button styles */
@@ -133,6 +146,12 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #1E2A78, #3B4B9A);
@@ -177,9 +196,8 @@ body {
 }
 /* Custom animations and styles */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-5px) rotate(0.5deg); }
-  66% { transform: translateY(2px) rotate(-0.5deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse-glow {

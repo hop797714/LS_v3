@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { 
   User, Mail, Phone, Calendar, ArrowRight, ArrowLeft, 
   CheckCircle, Search, UserPlus, Sparkles, Gift, Star,
-  Trophy, Heart, Zap, ChefHat, Eye, EyeOff, Lock,
+  Trophy, Heart, Zap, Eye, EyeOff, Lock,
   Shield, MessageSquare, Loader2, Crown, Award
 } from 'lucide-react';
 import { CustomerService } from '../services/customerService';
@@ -40,6 +40,7 @@ interface CustomerOnboardingProps {
 const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onComplete }) => {
   const [step, setStep] = useState(0); // 0: welcome, 1: auth form
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('signup');
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -53,7 +54,6 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
 
   // Animation refs
   const containerRef = useRef<HTMLDivElement>(null);
-  const curtainRef = useRef<HTMLDivElement>(null);
   const welcomeRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -125,27 +125,6 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
     }
   }, [step, authMode]);
 
-  // Curtain transition effect
-  const curtainTransition = (callback: () => void) => {
-    if (!curtainRef.current) return;
-    
-    gsap.timeline()
-      .to(curtainRef.current, {
-        y: "0%",
-        duration: 0.6,
-        ease: "power4.inOut"
-      })
-      .call(() => {
-        callback();
-      })
-      .to(curtainRef.current, {
-        y: "-100%",
-        duration: 0.6,
-        ease: "power4.inOut",
-        delay: 0.1
-      });
-  };
-
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     setError('');
@@ -154,6 +133,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
   const handleEmailCheck = async (email: string) => {
     if (!email || email.length < 3) return;
 
+    setIsTransitioning(true);
     try {
       const customer = await CustomerService.getCustomerByEmail(restaurant.id, email);
       if (customer) {
@@ -165,6 +145,8 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
       }
     } catch (err) {
       setExistingCustomer(null);
+    } finally {
+      setIsTransitioning(false);
     }
   };
 
@@ -241,17 +223,10 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] relative overflow-hidden">
-      {/* Curtain Transition Overlay */}
-      <div 
-        ref={curtainRef}
-        className="curtain"
-      />
-
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-indigo-500/10 rounded-full float-element" />
-        <div className="absolute bottom-40 left-10 w-24 h-24 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full float-element" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 rounded-full float-element" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-400/5 to-indigo-500/5 rounded-full" />
+        <div className="absolute bottom-40 left-10 w-24 h-24 bg-gradient-to-br from-purple-400/5 to-pink-500/5 rounded-full" />
       </div>
 
       {/* Modern Header */}
@@ -269,17 +244,17 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <div className="w-12 h-12 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-[var(--radius-md)] flex items-center justify-center shadow-[var(--shadow-soft)]">
-              <ChefHat className="w-6 h-6 text-white" />
+              <span className="text-white font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
             </div>
             <div>
-              <h1 className="font-semibold text-[var(--color-dark)] text-lg">{restaurant.name}</h1>
+              <h1 className="font-semibold text-[var(--color-dark)] text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>VOYA</h1>
               <p className="text-xs text-gray-500 font-medium">Loyalty Program</p>
             </div>
           </motion.div>
           
           {step > 0 && (
             <motion.button
-              onClick={() => curtainTransition(() => setStep(0))}
+              onClick={() => setStep(0)}
               className="p-3 text-gray-600 hover:bg-white/20 rounded-[var(--radius-md)] transition-all duration-300 btn-magnetic"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -316,7 +291,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 1.2, ease: [0.175, 0.885, 0.32, 1.275] }}
                   >
-                    <ChefHat className="w-16 h-16 text-white" />
+                    <span className="text-white font-bold text-4xl" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
                   </motion.div>
                   
@@ -345,35 +320,25 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                   </div>
                 </div>
 
-                {/* Benefits Grid */}
+                {/* Simple Welcome Message */}
                 <div className="space-y-4">
-                  {benefits.map((benefit, index) => {
-                    const Icon = benefit.icon;
-                    return (
-                      <motion.div
-                        key={index}
-                        className="benefit-card flex items-center gap-4 p-6 card-modern rounded-[var(--radius-md)]"
-                        whileHover={{ 
-                          scale: 1.02, 
-                          x: 8,
-                          transition: { duration: 0.2 }
-                        }}
-                      >
-                        <div className={`w-14 h-14 bg-gradient-to-br ${benefit.gradient} rounded-[var(--radius-md)] flex items-center justify-center shadow-[var(--shadow-soft)]`}>
-                          <Icon className="w-7 h-7 text-white" />
-                        </div>
-                        <div className="text-left">
-                          <p className="font-bold text-[var(--color-dark)] text-lg">{benefit.title}</p>
-                          <p className="text-gray-600">{benefit.description}</p>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
+                  <motion.div
+                    className="benefit-card p-8 card-modern rounded-[var(--radius-md)] text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                  >
+                    <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Sparkles className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[var(--color-dark)] mb-2">Join Our Loyalty Program</h3>
+                    <p className="text-gray-600">Start earning rewards with every visit</p>
+                  </motion.div>
                 </div>
 
                 {/* CTA Button */}
                 <motion.button
-                  onClick={() => curtainTransition(() => setStep(1))}
+                  onClick={() => setStep(1)}
                   className="cta-button btn-modern w-full bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white font-bold py-6 px-8 rounded-[var(--radius-md)] hover:shadow-[var(--shadow-strong)] transition-all duration-300 text-lg"
                   whileHover={{ 
                     scale: 1.02, 
@@ -445,11 +410,18 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                         value={formData.email}
                         onChange={(e) => {
                           handleInputChange('email', e.target.value);
-                          handleEmailCheck(e.target.value);
+                          if (e.target.value.length > 3) {
+                            handleEmailCheck(e.target.value);
+                          }
                         }}
                         className="focus-modern w-full pl-12 pr-4 py-4 border border-gray-200 rounded-[var(--radius-md)] bg-gray-50 focus:bg-white text-lg transition-all duration-300"
                         placeholder="Enter your email address"
                       />
+                      {isTransitioning && (
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                          <div className="w-5 h-5 border-2 border-gray-300 border-t-[#1E2A78] rounded-full animate-spin" />
+                        </div>
+                      )}
                     </div>
                   </motion.div>
 
@@ -458,10 +430,10 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                     {existingCustomer && (
                       <motion.div 
                         className="bg-blue-50 border border-blue-200 rounded-[var(--radius-md)] p-4"
-                        initial={{ opacity: 0, height: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, height: 'auto', scale: 1 }}
-                        exit={{ opacity: 0, height: 0, scale: 0.9 }}
-                        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-[var(--radius-sm)] flex items-center justify-center text-white font-bold">
@@ -486,10 +458,10 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                     {authMode === 'signup' && (
                       <motion.div 
                         className="space-y-6"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.3 }}
                       >
                         <div className="grid grid-cols-2 gap-4">
                           <div>
@@ -582,8 +554,10 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                   >
                     <button
                       onClick={() => {
-                        setAuthMode(authMode === 'login' ? 'signup' : 'login');
+                        const newMode = authMode === 'login' ? 'signup' : 'login';
+                        setAuthMode(newMode);
                         setError('');
+                        setExistingCustomer(null);
                       }}
                       className="text-[#1E2A78] hover:text-[#3B4B9A] font-semibold transition-colors duration-300 btn-magnetic"
                     >

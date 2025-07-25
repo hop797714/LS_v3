@@ -364,7 +364,7 @@ const StaffUI: React.FC = () => {
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-xl flex items-center justify-center">
-                <ChefHat className="w-6 h-6 text-white" />
+                <span className="text-white font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
               </div>
               <div>
                 <h1 className="font-bold text-gray-900">{restaurant?.name}</h1>
@@ -378,7 +378,7 @@ const StaffUI: React.FC = () => {
           <div className="w-full max-w-2xl">
             <div className="text-center mb-8">
               <div className="w-20 h-20 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-3xl flex items-center justify-center mx-auto mb-4">
-                <Building className="w-10 h-10 text-white" />
+                <span className="text-white font-bold text-2xl" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Select Your Branch</h2>
               <p className="text-gray-600">Choose the branch you're working at today</p>
@@ -428,7 +428,7 @@ const StaffUI: React.FC = () => {
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-xl flex items-center justify-center">
-                <ChefHat className="w-6 h-6 text-white" />
+                <span className="text-white font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
               </div>
               <div>
                 <h1 className="font-bold text-gray-900">{selectedBranch?.name}</h1>
@@ -519,7 +519,7 @@ const StaffUI: React.FC = () => {
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-xl flex items-center justify-center">
-              <ChefHat className="w-6 h-6 text-white" />
+              <span className="text-white font-bold text-lg" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
             </div>
             <div>
               <h1 className="font-bold text-gray-900">{selectedBranch?.name}</h1>

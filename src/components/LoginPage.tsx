@@ -192,10 +192,10 @@ const LoginPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-2xl mb-4 shadow-lg">
-            <ChefHat className="h-8 w-8 text-white" />
+           <span className="text-white font-bold text-xl" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] bg-clip-text text-transparent">
-            TableLoyalty
+         <h1 className="text-3xl font-bold bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] bg-clip-text text-transparent" style={{ fontFamily: 'Orbitron, monospace' }}>
+            VOYA
           </h1>
           <p className="text-gray-600 mt-2">
             {isSignUp ? 'Create your restaurant dashboard' : 'Sign in to your restaurant dashboard'}
@@ -413,7 +413,7 @@ const LoginPage: React.FC = () => {
         {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-xs text-gray-500">
-            © 2025 TableLoyalty. All rights reserved.
+            © 2025 VOYA. All rights reserved.
           </p>
         </div>
       </div>

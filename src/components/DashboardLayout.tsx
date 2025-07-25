@@ -182,18 +182,13 @@ const DashboardLayout: React.FC = () => {
           </button>
           <div className="flex items-center gap-2">
             <div className="p-1 rounded-lg bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] relative">
-              {isPro ? (
-                <ChefHat className="h-6 w-6 text-amber-500" />
-              ) : (
-                <ChefHat className="h-6 w-6 text-white" />
-              )}
+              <span className="text-white font-bold text-sm" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] bg-clip-text text-transparent">
-              TableLoyalty
+            <span className="text-xl font-bold bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] bg-clip-text text-transparent" style={{ fontFamily: 'Orbitron, monospace' }}>
+              VOYA
             </span>
           </div>
           <div className="flex items-center gap-2">
-            {isPro && <GoldenChefHat />}
             <button 
               className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg relative transition-all duration-200 active:scale-95"
               onClick={() => setShowNotifications(!showNotifications)}
@@ -219,22 +214,14 @@ const DashboardLayout: React.FC = () => {
           {isSidebarOpen && (
             <>
               <div className="p-1 rounded-lg bg-white/20 relative">
-                {isPro ? (
-                  <ChefHat className="h-8 w-8 text-amber-500" />
-                ) : (
-                  <ChefHat className="h-8 w-8 text-white" />
-                )}
+                <span className="text-white font-bold text-xl" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
               </div>
-              <span className="text-xl font-bold text-white">TableLoyalty</span>
+              <span className="text-xl font-bold text-white" style={{ fontFamily: 'Orbitron, monospace' }}>VOYA</span>
             </>
           )}
           {!isSidebarOpen && (
             <div className="p-1 rounded-lg bg-white/20 relative">
-              {isPro ? (
-                <ChefHat className="h-8 w-8 text-amber-500" />
-              ) : (
-                <ChefHat className="h-8 w-8 text-white" />
-              )}
+              <span className="text-white font-bold text-xl" style={{ fontFamily: 'Orbitron, monospace' }}>V</span>
             </div>
           )}
         </div>
@@ -467,7 +454,7 @@ const DashboardLayout: React.FC = () => {
 
                   {isPro && (
                     <div className="ml-2">
-                      <GoldenChefHat />
+                      <span className="text-amber-500 font-bold" style={{ fontFamily: 'Orbitron, monospace' }}>PRO</span>
                     </div>
                   )}
                 </div>

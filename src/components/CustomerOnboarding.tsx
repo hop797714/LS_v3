@@ -4,10 +4,13 @@ import { gsap } from 'gsap';
 import { 
   User, Mail, Phone, Calendar, ArrowRight, ArrowLeft, 
   CheckCircle, Search, UserPlus, Sparkles, Gift, Star,
-  Trophy, Heart, Zap, ChefHat, Eye, EyeOff, Lock,
+  Trophy, Heart, Zap, Eye, EyeOff, Lock,
   Shield, MessageSquare, Loader2, Crown, Award
 } from 'lucide-react';
 import { CustomerService } from '../services/customerService';
+
+
+
 
 interface Restaurant {
   id: string;
@@ -126,25 +129,6 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
   }, [step, authMode]);
 
   // Curtain transition effect
-  const curtainTransition = (callback: () => void) => {
-    if (!curtainRef.current) return;
-    
-    gsap.timeline()
-      .to(curtainRef.current, {
-        y: "0%",
-        duration: 0.6,
-        ease: "power4.inOut"
-      })
-      .call(() => {
-        callback();
-      })
-      .to(curtainRef.current, {
-        y: "-100%",
-        duration: 0.6,
-        ease: "power4.inOut",
-        delay: 0.1
-      });
-  };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -222,37 +206,31 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
     {
       icon: Gift,
       title: 'Earn Points',
-      description: 'Get points with every purchase',
-      gradient: 'from-green-400 to-emerald-500'
+      description: 'Get points vithe your meal',
+      gradient: 'from-[#FF6B35] to-[#F7931E]'
     },
     {
-      icon: Star,
+     icon: Star,
       title: 'Exclusive Rewards',
       description: 'Redeem points for amazing rewards',
-      gradient: 'from-blue-400 to-indigo-500'
+      gradient: 'from-[#F7931E] to-[#FFB800]'
     },
     {
       icon: Crown,
       title: 'VIP Status',
       description: 'Unlock higher tiers for better perks',
-      gradient: 'from-purple-400 to-pink-500'
+      gradient: 'from-[#FFB800] to-[#FF6B35]'
     }
   ];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] relative overflow-hidden">
-      {/* Curtain Transition Overlay */}
-      <div 
-        ref={curtainRef}
-        className="curtain"
-      />
-
       {/* Floating Background Elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      {/* <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-indigo-500/10 rounded-full float-element" />
         <div className="absolute bottom-40 left-10 w-24 h-24 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full float-element" style={{ animationDelay: '2s' }} />
         <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 rounded-full float-element" style={{ animationDelay: '4s' }} />
-      </div>
+      </div> */}
 
       {/* Modern Header */}
       <motion.header 
@@ -268,8 +246,8 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-[var(--radius-md)] flex items-center justify-center shadow-[var(--shadow-soft)]">
-              <ChefHat className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img src="/image.png" alt="VOYA" className="w-8 h-8 object-contain" />
             </div>
             <div>
               <h1 className="font-semibold text-[var(--color-dark)] text-lg">{restaurant.name}</h1>
@@ -279,7 +257,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
           
           {step > 0 && (
             <motion.button
-              onClick={() => curtainTransition(() => setStep(0))}
+              onClick={() => setStep(0)}
               className="p-3 text-gray-600 hover:bg-white/20 rounded-[var(--radius-md)] transition-all duration-300 btn-magnetic"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -310,14 +288,8 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                 {/* Hero Section */}
                 <div className="space-y-8">
                   {/* Animated Chef Hat */}
-                  <motion.div 
-                    className="w-32 h-32 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-full flex items-center justify-center mx-auto shadow-[var(--shadow-strong)] relative"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ duration: 1.2, ease: [0.175, 0.885, 0.32, 1.275] }}
-                  >
-                    <ChefHat className="w-16 h-16 text-white" />
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+                  <motion.div className="flex justify-center mb-8">
+                    <img src="/image.png" alt="VOYA" className="w-40 h-40 object-contain" />
                   </motion.div>
                   
                   {/* Welcome Text with Reveal Animation */}
@@ -339,7 +311,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                         animate={{ y: '0%' }}
                         transition={{ delay: 0.7, duration: 1, ease: [0.4, 0, 0.2, 1] }}
                       >
-                        Manage your rewards with ease using our restaurant loyalty system.
+                        Manage your rewards with Voya.
                       </motion.p>
                     </div>
                   </div>
@@ -373,8 +345,8 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
 
                 {/* CTA Button */}
                 <motion.button
-                  onClick={() => curtainTransition(() => setStep(1))}
-                  className="cta-button btn-modern w-full bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white font-bold py-6 px-8 rounded-[var(--radius-md)] hover:shadow-[var(--shadow-strong)] transition-all duration-300 text-lg"
+                  onClick={() => setStep(1)}
+                  className="cta-button btn-modern w-full bg-gradient-to-r from-[#FF6B35] to-[#F7931E] text-white font-bold py-6 px-8 rounded-[var(--radius-md)] hover:shadow-[var(--shadow-strong)] transition-all duration-300 text-lg"
                   whileHover={{ 
                     scale: 1.02, 
                     y: -2,
@@ -418,7 +390,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1, duration: 0.6 }}
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-[var(--radius-md)] flex items-center justify-center mx-auto mb-4 shadow-[var(--shadow-soft)]">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#FF6B35] to-[#F7931E] rounded-[var(--radius-md)] flex items-center justify-center mx-auto mb-4 shadow-[var(--shadow-soft)]">
                       {authMode === 'login' ? <Shield className="w-8 h-8 text-white" /> : <UserPlus className="w-8 h-8 text-white" />}
                     </div>
                     <h2 className="text-2xl font-bold text-[var(--color-dark)] mb-2">
@@ -464,7 +436,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                       >
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-[var(--radius-sm)] flex items-center justify-center text-white font-bold">
+                          <div className="w-12 h-12 bg-gradient-to-br from-[#FF6B35] to-[#F7931E] rounded-[var(--radius-sm)] flex items-center justify-center text-white font-bold">
                             {existingCustomer.first_name[0]}{existingCustomer.last_name[0]}
                           </div>
                           <div>
@@ -556,7 +528,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                   <motion.button
                     onClick={authMode === 'login' ? handleLogin : handleSignup}
                     disabled={loading || !formData.email.trim() || (authMode === 'signup' && (!formData.firstName.trim() || !formData.lastName.trim()))}
-                    className="btn-modern w-full bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white font-bold py-5 px-6 rounded-[var(--radius-md)] hover:shadow-[var(--shadow-medium)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg"
+                    className="btn-modern w-full bg-gradient-to-r from-[#FF6B35] to-[#F7931E] text-white font-bold py-5 px-6 rounded-[var(--radius-md)] hover:shadow-[var(--shadow-medium)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6 }}
@@ -585,7 +557,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                         setAuthMode(authMode === 'login' ? 'signup' : 'login');
                         setError('');
                       }}
-                      className="text-[#1E2A78] hover:text-[#3B4B9A] font-semibold transition-colors duration-300 btn-magnetic"
+                      className="text-[#FF6B35] hover:text-[#F7931E] font-semibold transition-colors duration-300 btn-magnetic"
                     >
                       {authMode === 'login' 
                         ? "Don't have an account? Sign up" 
@@ -596,7 +568,7 @@ const CustomerOnboarding: React.FC<CustomerOnboardingProps> = ({ restaurant, onC
                 </div>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> 
         </div>
       </div>
     </div>

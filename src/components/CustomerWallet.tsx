@@ -81,7 +81,7 @@ const CustomerWallet: React.FC<CustomerWalletProps> = ({ isDemo = false, onClose
   const [selectedReward, setSelectedReward] = useState<Reward | null>(null);
   const [showQRCode, setShowQRCode] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     loadRestaurantData();

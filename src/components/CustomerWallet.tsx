@@ -81,114 +81,43 @@ const CustomerWallet: React.FC<CustomerWalletProps> = ({ isDemo = false, onClose
   const [selectedReward, setSelectedReward] = useState<Reward | null>(null);
   const [showQRCode, setShowQRCode] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isDemo) {
-      loadDemoData();
-    } else {
-      loadRestaurantData();
-    }
+    loadRestaurantData();
   }, [restaurantSlug, isDemo]);
-
-  const loadDemoData = () => {
-    setRestaurant({
-      id: 'demo-restaurant',
-      name: 'Nadan Restaurant LLC',
-      slug: 'demo',
-      settings: {
-        pointValueAED: 0.05,
-        tierMultipliers: { bronze: 1.0, silver: 1.25, gold: 1.5, platinum: 2.0 }
-      }
-    });
-
-    setCustomer({
-      id: 'demo-customer',
-      first_name: 'John',
-      last_name: 'Doe',
-      email: 'john.doe@example.com',
-      phone: '+971501234567',
-      total_points: 1250,
-      lifetime_points: 2100,
-      current_tier: 'silver',
-      tier_progress: 65,
-      visit_count: 8,
-      total_spent: 850,
-      created_at: new Date().toISOString()
-    });
-
-    setRewards([
-      {
-        id: '1',
-        name: 'Free Appetizer',
-        description: 'Choose any appetizer from our menu',
-        points_required: 200,
-        category: 'food',
-        min_tier: 'bronze',
-        is_active: true,
-        total_redeemed: 0
-      },
-      {
-        id: '2',
-        name: 'Free Dessert',
-        description: 'Complimentary dessert of your choice',
-        points_required: 300,
-        category: 'food',
-        min_tier: 'bronze',
-        is_active: true,
-        total_redeemed: 0
-      },
-      {
-        id: '3',
-        name: '20% Off Next Visit',
-        description: 'Get 20% discount on your next meal',
-        points_required: 500,
-        category: 'discount',
-        min_tier: 'silver',
-        is_active: true,
-        total_redeemed: 0
-      }
-    ]);
-
-    setTransactions([
-      {
-        id: '1',
-        type: 'purchase',
-        points: 85,
-        amount_spent: 85,
-        description: 'Order #1234',
-        created_at: new Date(Date.now() - 86400000).toISOString()
-      },
-      {
-        id: '2',
-        type: 'redemption',
-        points: -200,
-        description: 'Redeemed: Free Appetizer',
-        created_at: new Date(Date.now() - 172800000).toISOString(),
-        reward: { name: 'Free Appetizer' }
-      }
-    ]);
-
-    setLoading(false);
-  };
 
   const loadRestaurantData = async () => {
     try {
       setLoading(true);
       
-      if (!restaurantSlug) {
-        setError('Restaurant not found');
-        return;
-      }
+      // If no slug provided, try to get the first restaurant from the database
+      let restaurantData;
+      if (restaurantSlug) {
+        const { data, error: restaurantError } = await supabase
+          .from('restaurants')
+          .select('*')
+          .eq('slug', restaurantSlug)
+          .single();
 
-      const { data: restaurantData, error: restaurantError } = await supabase
-        .from('restaurants')
-        .select('*')
-        .eq('slug', restaurantSlug)
-        .single();
+        if (restaurantError || !data) {
+          setError('Restaurant not found');
+          return;
+        }
+        restaurantData = data;
+      } else {
+        // Get the first restaurant for demo purposes
+        const { data, error: restaurantError } = await supabase
+          .from('restaurants')
+          .select('*')
+          .limit(1)
+          .single();
 
-      if (restaurantError || !restaurantData) {
-        setError('Restaurant not found');
-        return;
+        if (restaurantError || !data) {
+          setError('No restaurant found');
+          return;
+        }
+        restaurantData = data;
       }
 
       setRestaurant(restaurantData);
@@ -227,11 +156,13 @@ const CustomerWallet: React.FC<CustomerWalletProps> = ({ isDemo = false, onClose
     try {
       await RewardService.redeemReward(restaurant.id, customer.id, selectedReward.id);
       
-      const updatedCustomer = await CustomerService.getCustomer(restaurant.id, customer.id);
+      // Refresh customer data to get updated points
+      const updatedCustomer = await CustomerService.getCustomerByEmail(restaurant.id, customer.email);
       if (updatedCustomer) {
         setCustomer(updatedCustomer);
       }
       
+      // Refresh rewards and transactions
       const [updatedRewards, updatedTransactions] = await Promise.all([
         RewardService.getAvailableRewards(restaurant.id, customer.id),
         CustomerService.getCustomerTransactions(restaurant.id, customer.id)
@@ -240,6 +171,7 @@ const CustomerWallet: React.FC<CustomerWalletProps> = ({ isDemo = false, onClose
       setRewards(updatedRewards);
       setTransactions(updatedTransactions);
       setSelectedReward(null);
+      setShowRedemptionModal(false);
     } catch (err: any) {
       console.error('Error redeeming reward:', err);
       throw err;
@@ -387,7 +319,7 @@ const CustomerWallet: React.FC<CustomerWalletProps> = ({ isDemo = false, onClose
             <img 
               src="/image.png" 
               alt="VOYA" 
-              className="w-8 h-8 object-contain"
+              className="w-12 h-12 object-contain"
             />
             <div>
               <h1 className="font-bold text-gray-900 font-['Space_Grotesk',sans-serif]">{restaurant.name}</h1>
@@ -404,14 +336,12 @@ const CustomerWallet: React.FC<CustomerWalletProps> = ({ isDemo = false, onClose
                 2
               </span>
             </button>
-            {isDemo && onClose && (
-              <button
-                onClick={onClose}
-                className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            )}
+            <button
+              onClick={() => navigate('/login')}
+              className="px-3 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-sm font-medium"
+            >
+              Sign Out
+            </button>
           </div>
         </div>
       </header>

@@ -69,6 +69,9 @@ const CustomerRedemptionModal: React.FC<CustomerRedemptionModalProps> = ({
       setLoading(true);
       setStep('processing');
       
+      // Add a small delay to show processing state
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       await onConfirm();
       
       // Generate redemption code
@@ -78,6 +81,7 @@ const CustomerRedemptionModal: React.FC<CustomerRedemptionModalProps> = ({
       setStep('qr');
     } catch (error) {
       console.error('Redemption failed:', error);
+      alert('Redemption failed. Please try again.');
       setStep('confirm');
     } finally {
       setLoading(false);
@@ -102,7 +106,7 @@ const CustomerRedemptionModal: React.FC<CustomerRedemptionModalProps> = ({
       setStep('confirm');
       setRedemptionCode('');
       setCopied(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (

@@ -432,13 +432,13 @@ const StaffUI: React.FC = () => {
         
         <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40">
           <div className="flex items-center justify-between px-4 py-3">
-            {/* <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <img 
                 src="/image.png" 
                 alt="VOYA" 
                 className="w-12 h-12 object-contain"
               />
-              <div> */} 
+              <div>
                 <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
                 <p className="text-xs text-gray-600">{selectedBranch?.location}</p>
               </div>
@@ -460,13 +460,13 @@ const StaffUI: React.FC = () => {
           <div className="w-full max-w-md">
             <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/50 p-8">
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                {/* <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <img 
                     src="/image.png" 
                     alt="VOYA" 
                     className="w-16 h-16 object-contain"
-                  />
-                </div>
+                  /> 
+                </div> */}
                 <h2 className="text-xl font-bold text-gray-900 mb-2 font-['Space_Grotesk']">Enter Staff Password</h2>
                 <p className="text-gray-600">Access the staff portal for {selectedBranch?.name}</p>
               </div>

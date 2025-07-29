@@ -359,20 +359,16 @@ const StaffUI: React.FC = () => {
   // Branch Selection Screen
   if (step === 'branch-select') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/30 to-purple-50/30 relative">
-        {/* Subtle brand gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E6A85C]/5 via-[#E85A9B]/5 to-[#D946EF]/5 pointer-events-none"></div>
+      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 relative">
         
-        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40 relative">
+        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] shadow-sm">
-                <img 
-                  src="/image.png" 
-                  alt="VOYA" 
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
+              <img 
+                src="/image.png" 
+                alt="VOYA" 
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{restaurant?.name}</h1>
                 <p className="text-xs text-gray-600">Staff Portal</p>
@@ -381,16 +377,14 @@ const StaffUI: React.FC = () => {
           </div>
         </header>
 
-        <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-4 relative">
+        <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-4">
           <div className="w-full max-w-2xl">
             <div className="text-center mb-8">
-              <div className="w-20 h-20 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <img 
-                  src="/image.png" 
-                  alt="VOYA" 
-                  className="w-12 h-12 object-contain"
-                />
-              </div>
+              <img 
+                src="/image.png" 
+                alt="VOYA" 
+                className="w-20 h-20 object-contain mx-auto mb-4"
+              />
               <h2 className="text-2xl font-bold text-gray-900 mb-2 font-['Space_Grotesk']">Select Your Branch</h2>
               <p className="text-gray-600">Choose the branch you're working at today</p>
             </div>
@@ -434,20 +428,16 @@ const StaffUI: React.FC = () => {
   // Password Screen
   if (step === 'password') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/30 to-purple-50/30 relative">
-        {/* Subtle brand gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E6A85C]/5 via-[#E85A9B]/5 to-[#D946EF]/5 pointer-events-none"></div>
+      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
         
-        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40 relative">
+        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] shadow-sm">
-                <img 
-                  src="/image.png" 
-                  alt="VOYA" 
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
+              <img 
+                src="/image.png" 
+                alt="VOYA" 
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
                 <p className="text-xs text-gray-600">{selectedBranch?.location}</p>
@@ -474,7 +464,7 @@ const StaffUI: React.FC = () => {
                   <img 
                     src="/image.png" 
                     alt="VOYA" 
-                    className="w-10 h-10 object-contain"
+                    className="w-16 h-16 object-contain"
                   />
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-2 font-['Space_Grotesk']">Enter Staff Password</h2>
@@ -535,21 +525,17 @@ const StaffUI: React.FC = () => {
 
   // Staff Dashboard
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/30 to-purple-50/30 relative">
-      {/* Subtle brand gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#E6A85C]/5 via-[#E85A9B]/5 to-[#D946EF]/5 pointer-events-none"></div>
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
       
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40 relative">
+      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] shadow-sm">
-              <img 
-                src="/image.png" 
-                alt="VOYA" 
-                className="w-8 h-8 object-contain"
-              />
-            </div>
+            <img 
+              src="/image.png" 
+              alt="VOYA" 
+              className="w-12 h-12 object-contain"
+            />
             <div>
               <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
               <p className="text-xs text-gray-600">Staff Portal • {selectedBranch?.location}</p>
@@ -568,7 +554,7 @@ const StaffUI: React.FC = () => {
         </div>
       </header>
 
-      <div className="p-4 space-y-6 relative">
+      <div className="p-4 space-y-6">
         {/* Branch Stats */}
         {branchStats && (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

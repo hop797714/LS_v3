@@ -431,8 +431,8 @@ const StaffUI: React.FC = () => {
       <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
         
         <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40">
-          {/* <div className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between px-4 py-3">
+            {/* <div className="flex items-center gap-3">
               <img 
                 src="/image.png" 
                 alt="VOYA" 

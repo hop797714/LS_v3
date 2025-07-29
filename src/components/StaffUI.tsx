@@ -431,14 +431,14 @@ const StaffUI: React.FC = () => {
       <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
         
         <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40">
-          <div className="flex items-center justify-between px-4 py-3">
+          {/* <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
               <img 
                 src="/image.png" 
                 alt="VOYA" 
                 className="w-12 h-12 object-contain"
               />
-              <div>
+              <div> */} 
                 <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
                 <p className="text-xs text-gray-600">{selectedBranch?.location}</p>
               </div>

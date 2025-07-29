@@ -359,11 +359,14 @@ const StaffUI: React.FC = () => {
   // Branch Selection Screen
   if (step === 'branch-select') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
-        <header className="bg-black/20 backdrop-blur-md border-b border-gray-700/50 sticky top-0 z-40">
+      <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/30 to-purple-50/30 relative">
+        {/* Subtle brand gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#E6A85C]/5 via-[#E85A9B]/5 to-[#D946EF]/5 pointer-events-none"></div>
+        
+        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40 relative">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 backdrop-blur-sm">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] shadow-sm">
                 <img 
                   src="/image.png" 
                   alt="VOYA" 
@@ -371,32 +374,32 @@ const StaffUI: React.FC = () => {
                 />
               </div>
               <div>
-                <h1 className="font-bold text-white text-lg font-['Space_Grotesk']">{restaurant?.name}</h1>
-                <p className="text-xs text-gray-300">Staff Portal</p>
+                <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{restaurant?.name}</h1>
+                <p className="text-xs text-gray-600">Staff Portal</p>
               </div>
             </div>
           </div>
         </header>
 
-        <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-4">
+        <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-4 relative">
           <div className="w-full max-w-2xl">
             <div className="text-center mb-8">
-              <div className="w-20 h-20 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-3xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 h-20 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <img 
                   src="/image.png" 
                   alt="VOYA" 
                   className="w-12 h-12 object-contain"
                 />
               </div>
-              <h2 className="text-2xl font-bold text-white mb-2 font-['Space_Grotesk']">Select Your Branch</h2>
-              <p className="text-gray-300">Choose the branch you're working at today</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2 font-['Space_Grotesk']">Select Your Branch</h2>
+              <p className="text-gray-600">Choose the branch you're working at today</p>
             </div>
 
             {branches.length === 0 ? (
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center border border-gray-600/30">
-                <Building className="h-16 w-16 text-gray-500 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">No Active Branches</h3>
-                <p className="text-gray-300">Contact your manager to set up branches</p>
+              <div className="bg-white/70 backdrop-blur-md rounded-2xl p-8 text-center border border-gray-200/50 shadow-sm">
+                <Building className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">No Active Branches</h3>
+                <p className="text-gray-600">Contact your manager to set up branches</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -404,17 +407,17 @@ const StaffUI: React.FC = () => {
                   <button
                     key={branch.id}
                     onClick={() => handleBranchSelect(branch)}
-                    className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-gray-600/30 hover:border-[#E6A85C] hover:shadow-lg transition-all duration-200 text-left group"
+                    className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-gray-200/50 hover:border-[#E6A85C] hover:shadow-lg transition-all duration-200 text-left group shadow-sm"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                        <Building className="h-6 w-6 text-white" />
+                      <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[#E6A85C]/20 group-hover:via-[#E85A9B]/20 group-hover:to-[#D946EF]/20 transition-all">
+                        <Building className="h-6 w-6 text-gray-700 group-hover:text-[#E6A85C]" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-white group-hover:text-[#E6A85C] transition-colors">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-[#E6A85C] transition-colors">
                           {branch.name}
                         </h3>
-                        <p className="text-sm text-gray-300">{branch.location}</p>
+                        <p className="text-sm text-gray-600">{branch.location}</p>
                       </div>
                       <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-[#E6A85C] transition-colors" />
                     </div>
@@ -431,11 +434,14 @@ const StaffUI: React.FC = () => {
   // Password Screen
   if (step === 'password') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
-        <header className="bg-black/20 backdrop-blur-md border-b border-gray-700/50 sticky top-0 z-40">
+      <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/30 to-purple-50/30 relative">
+        {/* Subtle brand gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#E6A85C]/5 via-[#E85A9B]/5 to-[#D946EF]/5 pointer-events-none"></div>
+        
+        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40 relative">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 backdrop-blur-sm">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] shadow-sm">
                 <img 
                   src="/image.png" 
                   alt="VOYA" 
@@ -443,8 +449,8 @@ const StaffUI: React.FC = () => {
                 />
               </div>
               <div>
-                <h1 className="font-bold text-white text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
-                <p className="text-xs text-gray-300">{selectedBranch?.location}</p>
+                <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
+                <p className="text-xs text-gray-600">{selectedBranch?.location}</p>
               </div>
             </div>
             <button
@@ -453,37 +459,37 @@ const StaffUI: React.FC = () => {
                 setPassword('');
                 setError('');
               }}
-              className="text-gray-300 hover:text-white transition-colors text-sm font-medium px-3 py-1 rounded-lg hover:bg-white/10"
+              className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium px-3 py-1 rounded-lg hover:bg-gray-100"
             >
               Change Branch
             </button>
           </div>
         </header>
 
-        <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-4">
+        <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-4 relative">
           <div className="w-full max-w-md">
-            <div className="bg-gray-800/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-600/30 p-8">
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/50 p-8">
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <img 
                     src="/image.png" 
                     alt="VOYA" 
                     className="w-10 h-10 object-contain"
                   />
                 </div>
-                <h2 className="text-xl font-bold text-white mb-2 font-['Space_Grotesk']">Enter Staff Password</h2>
-                <p className="text-gray-300">Access the staff portal for {selectedBranch?.name}</p>
+                <h2 className="text-xl font-bold text-gray-900 mb-2 font-['Space_Grotesk']">Enter Staff Password</h2>
+                <p className="text-gray-600">Access the staff portal for {selectedBranch?.name}</p>
               </div>
 
               {error && (
-                <div className="bg-red-500/20 border border-red-400/30 text-red-300 px-4 py-3 rounded-xl text-sm mb-4">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm mb-4">
                   {error}
                 </div>
               )}
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Password
                   </label>
                   <div className="relative">
@@ -492,13 +498,13 @@ const StaffUI: React.FC = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
-                      className="w-full px-3 py-3 bg-white/10 border border-gray-600/30 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent pr-10 text-white placeholder-gray-400"
+                      className="w-full px-3 py-3 bg-white/60 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent pr-10 text-gray-900 placeholder-gray-500"
                       placeholder="Enter staff password"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                     >
                       {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                     </button>
@@ -529,12 +535,15 @@ const StaffUI: React.FC = () => {
 
   // Staff Dashboard
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-white via-orange-50/30 to-purple-50/30 relative">
+      {/* Subtle brand gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#E6A85C]/5 via-[#E85A9B]/5 to-[#D946EF]/5 pointer-events-none"></div>
+      
       {/* Header */}
-      <header className="bg-black/20 backdrop-blur-md border-b border-gray-700/50 sticky top-0 z-40">
+      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-40 relative">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 backdrop-blur-sm">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] shadow-sm">
               <img 
                 src="/image.png" 
                 alt="VOYA" 
@@ -542,8 +551,8 @@ const StaffUI: React.FC = () => {
               />
             </div>
             <div>
-              <h1 className="font-bold text-white text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
-              <p className="text-xs text-gray-300">Staff Portal • {selectedBranch?.location}</p>
+              <h1 className="font-bold text-gray-900 text-lg font-['Space_Grotesk']">{selectedBranch?.name}</h1>
+              <p className="text-xs text-gray-600">Staff Portal • {selectedBranch?.location}</p>
             </div>
           </div>
           <button
@@ -552,61 +561,61 @@ const StaffUI: React.FC = () => {
               setPassword('');
               setError('');
             }}
-            className="text-gray-300 hover:text-white transition-colors text-sm font-medium px-3 py-1 rounded-lg hover:bg-white/10"
+            className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium px-3 py-1 rounded-lg hover:bg-gray-100"
           >
             Sign Out
           </button>
         </div>
       </header>
 
-      <div className="p-4 space-y-6">
+      <div className="p-4 space-y-6 relative">
         {/* Branch Stats */}
         {branchStats && (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-gray-600/30">
+            <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 border border-gray-200/50 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                  <Users className="h-5 w-5 text-blue-400" />
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Users className="h-5 w-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-300">Customers Today</p>
-                  <p className="text-xl font-bold text-white">{branchStats.totalCustomers}</p>
+                  <p className="text-sm text-gray-600">Customers Today</p>
+                  <p className="text-xl font-bold text-gray-900">{branchStats.totalCustomers}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-gray-600/30">
+            <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 border border-gray-200/50 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
-                  <Gift className="h-5 w-5 text-green-400" />
+                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                  <Gift className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-300">Redemptions Today</p>
-                  <p className="text-xl font-bold text-white">{branchStats.totalRedemptions}</p>
+                  <p className="text-sm text-gray-600">Redemptions Today</p>
+                  <p className="text-xl font-bold text-gray-900">{branchStats.totalRedemptions}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-gray-600/30">
+            <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 border border-gray-200/50 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="h-5 w-5 text-purple-400" />
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <TrendingUp className="h-5 w-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-300">Points Issued Today</p>
-                  <p className="text-xl font-bold text-white">{branchStats.totalPointsIssued.toLocaleString()}</p>
+                  <p className="text-sm text-gray-600">Points Issued Today</p>
+                  <p className="text-xl font-bold text-gray-900">{branchStats.totalPointsIssued.toLocaleString()}</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-gray-600/30">
+            <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 border border-gray-200/50 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center">
-                  <DollarSign className="h-5 w-5 text-yellow-400" />
+                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                  <DollarSign className="h-5 w-5 text-yellow-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-300">Revenue Today</p>
-                  <p className="text-xl font-bold text-white">{branchStats.totalRevenue.toFixed(0)} AED</p>
+                  <p className="text-sm text-gray-600">Revenue Today</p>
+                  <p className="text-xl font-bold text-gray-900">{branchStats.totalRevenue.toFixed(0)} AED</p>
                 </div>
               </div>
             </div>
@@ -614,14 +623,14 @@ const StaffUI: React.FC = () => {
         )}
 
         {/* Tab Navigation */}
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-gray-600/30 overflow-hidden">
-          <div className="flex border-b border-gray-600/30">
+        <div className="bg-white/70 backdrop-blur-md rounded-2xl border border-gray-200/50 overflow-hidden shadow-sm">
+          <div className="flex border-b border-gray-200">
             <button
               onClick={() => setActiveTab('assign')}
               className={`flex-1 py-4 px-6 font-medium transition-colors ${
                 activeTab === 'assign'
                   ? 'bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white'
-                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Assign Points
@@ -631,7 +640,7 @@ const StaffUI: React.FC = () => {
               className={`flex-1 py-4 px-6 font-medium transition-colors ${
                 activeTab === 'redeem'
                   ? 'bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white'
-                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Redeem Rewards
@@ -648,7 +657,7 @@ const StaffUI: React.FC = () => {
                   className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium transition-all ${
                     assignmentMode === 'qr'
                       ? 'bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white'
-                      : 'bg-white/20 text-gray-300 hover:bg-white/30'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
                   <QrCode className="h-4 w-4" />
@@ -659,7 +668,7 @@ const StaffUI: React.FC = () => {
                   className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium transition-all ${
                     assignmentMode === 'menu'
                       ? 'bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white'
-                      : 'bg-white/20 text-gray-300 hover:bg-white/30'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
                   <Utensils className="h-4 w-4" />
@@ -668,18 +677,18 @@ const StaffUI: React.FC = () => {
               </div>
 
               {error && (
-                <div className="bg-red-500/20 border border-red-400/30 text-red-300 px-4 py-3 rounded-xl text-sm mb-4">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm mb-4">
                   {error}
                 </div>
               )}
 
               {/* Customer Search */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Customer Email
                 </label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <input
                     type="email"
                     value={customerEmail}
@@ -687,19 +696,19 @@ const StaffUI: React.FC = () => {
                       setCustomerEmail(e.target.value);
                       handleCustomerSearch(e.target.value);
                     }}
-                    className="w-full pl-10 pr-4 py-3 bg-white/10 border border-gray-600/30 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-white placeholder-gray-400"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-gray-900 placeholder-gray-500"
                     placeholder="Enter customer email"
                   />
                 </div>
 
                 {foundCustomer && (
-                  <div className="mt-3 p-4 bg-green-500/20 border border-green-400/30 rounded-xl">
+                  <div className="mt-3 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-full flex items-center justify-center text-white font-medium">
                         {foundCustomer.first_name[0]}{foundCustomer.last_name[0]}
                       </div>
                       <div>
-                        <p className="font-medium text-green-300">
+                        <p className="font-medium text-green-700">
                           {foundCustomer.first_name} {foundCustomer.last_name}
                         </p>
                         <div className="flex items-center gap-2">
@@ -709,7 +718,7 @@ const StaffUI: React.FC = () => {
                             return (
                               <>
                                 <TierIcon className={`h-4 w-4 ${tierInfo.color}`} />
-                                <span className="text-sm text-green-400">
+                                <span className="text-sm text-green-600">
                                   {tierInfo.name} • {foundCustomer.total_points} points
                                 </span>
                               </>
@@ -726,14 +735,14 @@ const StaffUI: React.FC = () => {
               {assignmentMode === 'qr' && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Order Amount (AED)
                     </label>
                     <input
                       type="number"
                       value={orderAmount}
                       onChange={(e) => setOrderAmount(e.target.value)}
-                      className="w-full px-3 py-3 bg-white/10 border border-gray-600/30 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-white placeholder-gray-400"
+                      className="w-full px-3 py-3 bg-white/60 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-gray-900 placeholder-gray-500"
                       placeholder="Enter total order amount"
                       min="0"
                       step="0.01"
@@ -745,13 +754,13 @@ const StaffUI: React.FC = () => {
               {/* Menu Items Mode */}
               {assignmentMode === 'menu' && (
                 <div className="space-y-4">
-                  <h3 className="font-medium text-white">Select Menu Items</h3>
+                  <h3 className="font-medium text-gray-900">Select Menu Items</h3>
                   <div className="max-h-64 overflow-y-auto space-y-2">
                     {menuItems.map((item) => (
-                      <div key={item.id} className="flex items-center justify-between p-3 bg-white/10 rounded-lg border border-gray-600/30">
+                      <div key={item.id} className="flex items-center justify-between p-3 bg-white/60 rounded-lg border border-gray-200">
                         <div className="flex-1">
-                          <p className="font-medium text-white">{item.name}</p>
-                          <p className="text-sm text-gray-300">{item.selling_price} AED</p>
+                          <p className="font-medium text-gray-900">{item.name}</p>
+                          <p className="text-sm text-gray-600">{item.selling_price} AED</p>
                         </div>
                         <div className="flex items-center gap-2">
                           <button
@@ -759,11 +768,11 @@ const StaffUI: React.FC = () => {
                               ...prev,
                               [item.id]: Math.max(0, (prev[item.id] || 0) - 1)
                             }))}
-                            className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors text-white"
+                            className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors text-gray-700"
                           >
                             <Minus className="h-4 w-4" />
                           </button>
-                          <span className="w-8 text-center font-medium text-white">
+                          <span className="w-8 text-center font-medium text-gray-900">
                             {selectedMenuItems[item.id] || 0}
                           </span>
                           <button
@@ -771,7 +780,7 @@ const StaffUI: React.FC = () => {
                               ...prev,
                               [item.id]: (prev[item.id] || 0) + 1
                             }))}
-                            className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors text-white"
+                            className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors text-gray-700"
                           >
                             <Plus className="h-4 w-4" />
                           </button>
@@ -808,18 +817,18 @@ const StaffUI: React.FC = () => {
           {activeTab === 'redeem' && (
             <div className="p-6">
               {error && (
-                <div className="bg-red-500/20 border border-red-400/30 text-red-300 px-4 py-3 rounded-xl text-sm mb-4">
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm mb-4">
                   {error}
                 </div>
               )}
 
               {/* Customer Search for Redemption */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Customer Email
                 </label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <input
                     type="email"
                     value={redeemCustomerEmail}
@@ -827,19 +836,19 @@ const StaffUI: React.FC = () => {
                       setRedeemCustomerEmail(e.target.value);
                       handleRedeemCustomerSearch(e.target.value);
                     }}
-                    className="w-full pl-10 pr-4 py-3 bg-white/10 border border-gray-600/30 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-white placeholder-gray-400"
+                    className="w-full pl-10 pr-4 py-3 bg-white/60 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-gray-900 placeholder-gray-500"
                     placeholder="Enter customer email to redeem rewards"
                   />
                 </div>
 
                 {redeemFoundCustomer && (
-                  <div className="mt-3 p-4 bg-green-500/20 border border-green-400/30 rounded-xl">
+                  <div className="mt-3 p-4 bg-green-50 border border-green-200 rounded-xl">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-full flex items-center justify-center text-white font-medium">
                         {redeemFoundCustomer.first_name[0]}{redeemFoundCustomer.last_name[0]}
                       </div>
                       <div>
-                        <p className="font-medium text-green-300">
+                        <p className="font-medium text-green-700">
                           {redeemFoundCustomer.first_name} {redeemFoundCustomer.last_name}
                         </p>
                         <div className="flex items-center gap-2">
@@ -849,7 +858,7 @@ const StaffUI: React.FC = () => {
                             return (
                               <>
                                 <TierIcon className={`h-4 w-4 ${tierInfo.color}`} />
-                                <span className="text-sm text-green-400">
+                                <span className="text-sm text-green-600">
                                   {tierInfo.name} • {redeemFoundCustomer.total_points} points
                                 </span>
                               </>
@@ -865,12 +874,12 @@ const StaffUI: React.FC = () => {
               {/* Available Rewards */}
               {redeemFoundCustomer && (
                 <div className="space-y-4">
-                  <h3 className="font-medium text-white">Available Rewards</h3>
+                  <h3 className="font-medium text-gray-900">Available Rewards</h3>
                   {availableRewards.length === 0 ? (
-                    <div className="text-center py-8 bg-white/10 rounded-xl border border-gray-600/30">
-                      <Gift className="h-12 w-12 text-gray-500 mx-auto mb-2" />
-                      <p className="text-gray-300">No rewards available for this customer</p>
-                      <p className="text-sm text-gray-400">Customer may need more points or higher tier</p>
+                    <div className="text-center py-8 bg-white/60 rounded-xl border border-gray-200">
+                      <Gift className="h-12 w-12 text-gray-400 mx-auto mb-2" />
+                      <p className="text-gray-600">No rewards available for this customer</p>
+                      <p className="text-sm text-gray-500">Customer may need more points or higher tier</p>
                     </div>
                   ) : (
                     <div className="space-y-3 max-h-64 overflow-y-auto">
@@ -879,20 +888,20 @@ const StaffUI: React.FC = () => {
                           key={reward.id}
                           className={`p-4 border rounded-xl cursor-pointer transition-all ${
                             selectedReward?.id === reward.id
-                              ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/20 via-[#E85A9B]/20 to-[#D946EF]/20'
-                              : 'border-gray-600/30 hover:border-gray-500/50 bg-white/10'
+                              ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
+                              : 'border-gray-200 hover:border-gray-300 bg-white/60'
                           }`}
                           onClick={() => setSelectedReward(reward)}
                         >
                           <div className="flex items-center justify-between">
                             <div className="flex-1">
-                              <h4 className="font-medium text-white">{reward.name}</h4>
-                              <p className="text-sm text-gray-300">{reward.description}</p>
+                              <h4 className="font-medium text-gray-900">{reward.name}</h4>
+                              <p className="text-sm text-gray-600">{reward.description}</p>
                               <div className="flex items-center gap-2 mt-1">
                                 <span className="text-sm font-medium text-[#E6A85C]">
                                   {reward.points_required} points
                                 </span>
-                                <span className="text-xs px-2 py-1 rounded-full bg-white/20 text-gray-300">
+                                <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">
                                   {reward.category}
                                 </span>
                               </div>
@@ -925,13 +934,13 @@ const StaffUI: React.FC = () => {
 
       {/* Confirmation Modal */}
       {showConfirmModal && foundCustomer && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-gray-800 rounded-2xl p-6 max-w-md w-full border border-gray-600/30">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full border border-gray-200 shadow-xl">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-bold text-white">Confirm Point Assignment</h3>
+              <h3 className="text-lg font-bold text-gray-900">Confirm Point Assignment</h3>
               <button
                 onClick={() => setShowConfirmModal(false)}
-                className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/10"
+                className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -939,16 +948,16 @@ const StaffUI: React.FC = () => {
 
             <div className="space-y-4">
               {/* Customer Info */}
-              <div className="bg-white/10 rounded-xl p-4 border border-gray-600/30">
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-full flex items-center justify-center text-white font-medium">
                     {foundCustomer.first_name[0]}{foundCustomer.last_name[0]}
                   </div>
                   <div>
-                    <p className="font-medium text-white">
+                    <p className="font-medium text-gray-900">
                       {foundCustomer.first_name} {foundCustomer.last_name}
                     </p>
-                    <p className="text-sm text-gray-300">{foundCustomer.email}</p>
+                    <p className="text-sm text-gray-600">{foundCustomer.email}</p>
                   </div>
                 </div>
               </div>
@@ -960,17 +969,17 @@ const StaffUI: React.FC = () => {
               </div>
 
               {/* Order Details */}
-              <div className="bg-white/10 rounded-xl p-4 border border-gray-600/30">
-                <h4 className="font-medium text-white mb-2">Order Details</h4>
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <h4 className="font-medium text-gray-900 mb-2">Order Details</h4>
                 {assignmentMode === 'qr' ? (
-                  <p className="text-sm text-gray-300">Order Amount: {orderAmount} AED</p>
+                  <p className="text-sm text-gray-600">Order Amount: {orderAmount} AED</p>
                 ) : (
                   <div className="space-y-1">
                     {Object.entries(selectedMenuItems).map(([itemId, quantity]) => {
                       if (quantity > 0) {
                         const item = menuItems.find(i => i.id === itemId);
                         return item ? (
-                          <p key={itemId} className="text-sm text-gray-300">
+                          <p key={itemId} className="text-sm text-gray-600">
                             {item.name} x{quantity} = {(item.selling_price * quantity).toFixed(2)} AED
                           </p>
                         ) : null;
@@ -985,7 +994,7 @@ const StaffUI: React.FC = () => {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowConfirmModal(false)}
-                className="flex-1 py-3 px-4 border border-gray-600/30 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
+                className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors"
               >
                 Cancel
               </button>
@@ -1010,13 +1019,13 @@ const StaffUI: React.FC = () => {
 
       {/* Redemption Confirmation Modal */}
       {showRedeemModal && redeemFoundCustomer && selectedReward && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-gray-800 rounded-2xl p-6 max-w-md w-full border border-gray-600/30">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-2xl p-6 max-w-md w-full border border-gray-200 shadow-xl">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-bold text-white">Confirm Reward Redemption</h3>
+              <h3 className="text-lg font-bold text-gray-900">Confirm Reward Redemption</h3>
               <button
                 onClick={() => setShowRedeemModal(false)}
-                className="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/10"
+                className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -1024,17 +1033,17 @@ const StaffUI: React.FC = () => {
 
             <div className="space-y-4">
               {/* Customer Info */}
-              <div className="bg-white/10 rounded-xl p-4 border border-gray-600/30">
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-full flex items-center justify-center text-white font-medium">
                     {redeemFoundCustomer.first_name[0]}{redeemFoundCustomer.last_name[0]}
                   </div>
                   <div>
-                    <p className="font-medium text-white">
+                    <p className="font-medium text-gray-900">
                       {redeemFoundCustomer.first_name} {redeemFoundCustomer.last_name}
                     </p>
-                    <p className="text-sm text-gray-300">{redeemFoundCustomer.email}</p>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-600">{redeemFoundCustomer.email}</p>
+                    <p className="text-sm text-gray-600">
                       Current Points: {redeemFoundCustomer.total_points}
                     </p>
                   </div>
@@ -1042,19 +1051,19 @@ const StaffUI: React.FC = () => {
               </div>
 
               {/* Reward Details */}
-              <div className="bg-gradient-to-r from-[#E6A85C]/20 via-[#E85A9B]/20 to-[#D946EF]/20 rounded-xl p-4 border border-[#E6A85C]/30">
-                <h4 className="font-medium text-white mb-2">Reward to Redeem</h4>
+              <div className="bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10 rounded-xl p-4 border border-[#E6A85C]/20">
+                <h4 className="font-medium text-gray-900 mb-2">Reward to Redeem</h4>
                 <p className="font-semibold text-[#E6A85C]">{selectedReward.name}</p>
-                <p className="text-sm text-gray-300">{selectedReward.description}</p>
+                <p className="text-sm text-gray-600">{selectedReward.description}</p>
                 <p className="text-sm font-medium text-[#E6A85C] mt-2">
                   Cost: {selectedReward.points_required} points
                 </p>
               </div>
 
               {/* Points After Redemption */}
-              <div className="bg-blue-500/20 rounded-xl p-4 border border-blue-400/30">
-                <p className="text-sm text-blue-300">Points after redemption:</p>
-                <p className="text-xl font-bold text-blue-200">
+              <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                <p className="text-sm text-blue-600">Points after redemption:</p>
+                <p className="text-xl font-bold text-blue-700">
                   {redeemFoundCustomer.total_points - selectedReward.points_required} points
                 </p>
               </div>
@@ -1063,7 +1072,7 @@ const StaffUI: React.FC = () => {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowRedeemModal(false)}
-                className="flex-1 py-3 px-4 border border-gray-600/30 text-gray-300 rounded-xl hover:bg-white/10 transition-colors"
+                className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors"
               >
                 Cancel
               </button>

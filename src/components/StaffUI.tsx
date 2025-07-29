@@ -209,9 +209,9 @@ const StaffUI: React.FC = () => {
               menuItem,
               menuItem.selling_price,
               foundCustomer.current_tier,
-              quantity
+              1 // Calculate for single item first
             );
-            totalPoints += result.points;
+            totalPoints += result.points * quantity; // Then multiply by quantity
           }
         }
       });

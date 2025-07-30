@@ -182,14 +182,10 @@ const DashboardLayout: React.FC = () => {
           </button>
           <div className="flex items-center gap-2">
             <div className="p-1 rounded-lg bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] relative">
-              {isPro ? (
-                <ChefHat className="h-6 w-6 text-amber-500" />
-              ) : (
-                <ChefHat className="h-6 w-6 text-white" />
-              )}
+              <img src="/image.png" alt="VOYA" className="h-6 w-6 object-contain" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] bg-clip-text text-transparent">
-              TableLoyalty
+            <span className="text-xl font-bold bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] bg-clip-text text-transparent font-['Space_Grotesk']">
+              VOYA
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -218,23 +214,15 @@ const DashboardLayout: React.FC = () => {
         <div className={`flex h-16 items-center gap-2 px-6 border-b border-gray-200 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] ${!isSidebarOpen ? 'justify-center px-2' : ''}`}>
           {isSidebarOpen && (
             <>
-              <div className="p-1 rounded-lg bg-white/20 relative">
-                {isPro ? (
-                  <ChefHat className="h-8 w-8 text-amber-500" />
-                ) : (
-                  <ChefHat className="h-8 w-8 text-white" />
-                )}
+              <div className="p-2 rounded-lg bg-white/20 relative">
+                <img src="/image.png" alt="VOYA" className="h-8 w-8 object-contain" />
               </div>
-              <span className="text-xl font-bold text-white">TableLoyalty</span>
+              <span className="text-xl font-bold text-white font-['Space_Grotesk']">VOYA</span>
             </>
           )}
           {!isSidebarOpen && (
-            <div className="p-1 rounded-lg bg-white/20 relative">
-              {isPro ? (
-                <ChefHat className="h-8 w-8 text-amber-500" />
-              ) : (
-                <ChefHat className="h-8 w-8 text-white" />
-              )}
+            <div className="p-2 rounded-lg bg-white/20 relative">
+              <img src="/image.png" alt="VOYA" className="h-8 w-8 object-contain" />
             </div>
           )}
         </div>
@@ -265,12 +253,12 @@ const DashboardLayout: React.FC = () => {
                   !isSidebarOpen ? 'justify-center px-2' : ''
                 } ${
                   isActive(item.href)
-                    ? 'bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white shadow-lg transform scale-[1.02]'
-                    : 'text-gray-700 hover:bg-gray-50 hover:scale-[1.01]'
+                    ? 'bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white shadow-lg transform scale-[1.02]'
+                    : 'text-gray-700 hover:bg-gradient-to-r hover:from-[#E6A85C]/10 hover:via-[#E85A9B]/10 hover:to-[#D946EF]/10 hover:scale-[1.01]'
                 }`}
                 title={!isSidebarOpen ? item.name : ''}
               >
-                <Icon className={`h-5 w-5 ${isActive(item.href) ? 'text-white' : 'text-gray-500 group-hover:text-[#1E2A78]'} ${!isSidebarOpen ? 'mx-auto' : ''}`} />
+                <Icon className={`h-5 w-5 ${isActive(item.href) ? 'text-white' : 'text-gray-500 group-hover:text-[#E6A85C]'} ${!isSidebarOpen ? 'mx-auto' : ''}`} />
                 {isSidebarOpen && (
                   <>
                     <span className="font-medium">{item.name}</span>
@@ -297,7 +285,7 @@ const DashboardLayout: React.FC = () => {
               <p className="text-xs text-gray-600 mb-3">Unlock advanced analytics and unlimited customers</p>
               <Link 
                 to="/dashboard/billing"
-                className="block w-full bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white text-xs font-medium py-2 rounded-lg hover:shadow-lg transition-all duration-200 text-center"
+                className="block w-full bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white text-xs font-medium py-2 rounded-lg hover:shadow-lg transition-all duration-200 text-center"
               >
                 Upgrade Now
               </Link>
@@ -327,6 +315,7 @@ const DashboardLayout: React.FC = () => {
                   type="text"
                   placeholder="Search customers, rewards, or analytics..."
                   className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                 />
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               </div>
@@ -336,6 +325,7 @@ const DashboardLayout: React.FC = () => {
                   value={timeRange}
                   onChange={(e) => setTimeRange(e.target.value)}
                   className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                 >
                   <option value="7d">Last 7 days</option>
                   <option value="30d">Last 30 days</option>
@@ -346,6 +336,7 @@ const DashboardLayout: React.FC = () => {
                   onClick={() => setShowCustomerWallet(true)}
                   onClick={() => navigate('/wallet')}
                   className="px-3 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors flex items-center gap-2 text-sm font-medium"
+                  className="px-3 py-2 bg-gradient-to-r from-[#E6A85C]/20 via-[#E85A9B]/20 to-[#D946EF]/20 text-[#E6A85C] border border-[#E6A85C]/30 rounded-lg hover:from-[#E6A85C]/30 hover:via-[#E85A9B]/30 hover:to-[#D946EF]/30 transition-colors flex items-center gap-2 text-sm font-medium"
                 >
                   <Wallet className="h-4 w-4" />
                   Customer Wallet
@@ -397,6 +388,7 @@ const DashboardLayout: React.FC = () => {
                       <p className="text-xs text-gray-500">{currentUser?.role || 'Restaurant Owner'}</p>
                     </div>
                     <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] text-white flex items-center justify-center shadow-lg">
+                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white flex items-center justify-center shadow-lg">
                       <span className="font-medium text-sm">{getUserInitials()}</span>
                     </div>
                     <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform ${showUserDropdown ? 'rotate-180' : ''}`} />
@@ -413,6 +405,7 @@ const DashboardLayout: React.FC = () => {
                       <div className="px-4 py-3 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
                         <div className="flex items-center gap-3">
                           <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] text-white flex items-center justify-center shadow-lg">
+                          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white flex items-center justify-center shadow-lg">
                             <span className="font-medium text-sm">{getUserInitials()}</span>
                           </div>
                           <div>

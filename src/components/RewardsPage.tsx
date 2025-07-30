@@ -299,7 +299,7 @@ const RewardsPage: React.FC = () => {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
         >
           <Plus className="h-4 w-4" />
           Create Reward
@@ -368,7 +368,7 @@ const RewardsPage: React.FC = () => {
                 placeholder="Search rewards..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
               />
             </div>
           </div>
@@ -377,7 +377,7 @@ const RewardsPage: React.FC = () => {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
             >
               <option value="all">All Categories</option>
               {categories.map(category => (
@@ -388,7 +388,7 @@ const RewardsPage: React.FC = () => {
             <select
               value={filterTier}
               onChange={(e) => setFilterTier(e.target.value)}
-              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
             >
               <option value="all">All Tiers</option>
               {tiers.map(tier => (
@@ -399,7 +399,7 @@ const RewardsPage: React.FC = () => {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -425,7 +425,7 @@ const RewardsPage: React.FC = () => {
           {rewards.length === 0 && (
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-6 py-3 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+              className="px-6 py-3 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
             >
               Create Your First Reward
             </button>
@@ -451,7 +451,7 @@ const RewardsPage: React.FC = () => {
                         <CategoryIcon className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 group-hover:text-[#1E2A78] transition-colors">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-[#E6A85C] transition-colors">
                           {reward.name}
                         </h3>
                         <div className="flex items-center gap-2 mt-1">
@@ -573,7 +573,7 @@ const RewardsPage: React.FC = () => {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   placeholder="e.g., Free Appetizer"
                 />
               </div>
@@ -585,7 +585,7 @@ const RewardsPage: React.FC = () => {
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   placeholder="Describe what customers get with this reward"
                   rows={3}
                 />
@@ -600,7 +600,7 @@ const RewardsPage: React.FC = () => {
                     type="number"
                     value={formData.points_required}
                     onChange={(e) => setFormData({ ...formData, points_required: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                     min="1"
                   />
                 </div>
@@ -616,7 +616,7 @@ const RewardsPage: React.FC = () => {
                       ...formData, 
                       total_available: e.target.value ? parseInt(e.target.value) : undefined 
                     })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                     placeholder="Unlimited"
                     min="1"
                   />
@@ -631,7 +631,7 @@ const RewardsPage: React.FC = () => {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   >
                     {categories.map(category => (
                       <option key={category.value} value={category.value}>
@@ -648,7 +648,7 @@ const RewardsPage: React.FC = () => {
                   <select
                     value={formData.min_tier}
                     onChange={(e) => setFormData({ ...formData, min_tier: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   >
                     {tiers.map(tier => (
                       <option key={tier.value} value={tier.value}>
@@ -665,7 +665,7 @@ const RewardsPage: React.FC = () => {
                   id="is_active"
                   checked={formData.is_active}
                   onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                  className="w-4 h-4 text-[#1E2A78] border-gray-300 rounded focus:ring-[#1E2A78]"
+                  className="w-4 h-4 text-[#E6A85C] border-gray-300 rounded focus:ring-[#E6A85C]"
                 />
                 <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
                   Active (customers can redeem this reward)
@@ -687,7 +687,7 @@ const RewardsPage: React.FC = () => {
               <button
                 onClick={editingReward ? handleUpdateReward : handleCreateReward}
                 disabled={formLoading}
-                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {formLoading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

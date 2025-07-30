@@ -128,7 +128,7 @@ const DashboardHome = () => {
 
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
           <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Plus className="h-8 w-8 text-white" />
             </div>
             <h2 className="text-xl font-bold text-gray-900 mb-2">Set Up Your Restaurant</h2>
@@ -138,7 +138,7 @@ const DashboardHome = () => {
             </p>
             <button
               onClick={refreshData}
-              className="px-6 py-3 bg-[#1E2A78] text-white rounded-lg hover:bg-[#3B4B9A] transition-colors flex items-center gap-2 mx-auto"
+              className="px-6 py-3 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-lg hover:shadow-lg transition-all duration-200 flex items-center gap-2 mx-auto"
             >
               <RefreshCw className="h-4 w-4" />
               Refresh Page
@@ -156,7 +156,7 @@ const DashboardHome = () => {
                 className="bg-white rounded-2xl p-6 border border-gray-200"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#1E2A78]/10 to-[#3B4B9A]/10 text-[#1E2A78]">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10 text-[#E6A85C]">
                     <Icon className="h-6 w-6" />
                   </div>
                   <div className="flex items-center px-2 py-1 rounded-full text-xs font-medium text-gray-500 bg-gray-100">
@@ -186,7 +186,7 @@ const DashboardHome = () => {
             onClick={() => setShowROIDashboard(!showROIDashboard)}
             className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
               showROIDashboard 
-                ? 'bg-[#1E2A78] text-white' 
+                ? 'bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white' 
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -226,7 +226,7 @@ const DashboardHome = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-[#1E2A78]/10 to-[#3B4B9A]/10 text-[#1E2A78] group-hover:from-[#1E2A78] group-hover:to-[#3B4B9A] group-hover:text-white transition-all duration-300">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10 text-[#E6A85C] group-hover:from-[#E6A85C] group-hover:via-[#E85A9B] group-hover:to-[#D946EF] group-hover:text-white transition-all duration-300">
                   <Icon className="h-6 w-6" />
                 </div>
                 <div className={`flex items-center px-2 py-1 rounded-full text-xs font-medium ${
@@ -275,13 +275,13 @@ const DashboardHome = () => {
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={customerGrowthData}>
                   <defs>
-                    <linearGradient id="newCustomers" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#1E2A78" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#1E2A78" stopOpacity={0.05}/>
+                    <linearGradient id="newCustomersVoya" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#E6A85C" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#E6A85C" stopOpacity={0.05}/>
                     </linearGradient>
-                    <linearGradient id="returningCustomers" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.05}/>
+                    <linearGradient id="returningCustomersVoya" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#E85A9B" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#E85A9B" stopOpacity={0.05}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -300,9 +300,9 @@ const DashboardHome = () => {
                   <Area
                     type="monotone"
                     dataKey="newCustomers"
-                    stroke="#1E2A78"
+                    stroke="#E6A85C"
                     strokeWidth={3}
-                    fill="url(#newCustomers)"
+                    fill="url(#newCustomersVoya)"
                     name="New Customers"
                     animationBegin={200}
                     animationDuration={1500}
@@ -310,9 +310,9 @@ const DashboardHome = () => {
                   <Area
                     type="monotone"
                     dataKey="returningCustomers"
-                    stroke="#3B82F6"
+                    stroke="#E85A9B"
                     strokeWidth={2}
-                    fill="url(#returningCustomers)"
+                    fill="url(#returningCustomersVoya)"
                     name="Returning Customers"
                     animationBegin={400}
                     animationDuration={1500}
@@ -522,14 +522,14 @@ const DashboardHome = () => {
                 <Tooltip content={renderCustomTooltip} />
                 <Bar 
                   dataKey="revenue" 
-                  fill="#1E2A78" 
+                  fill="#E6A85C" 
                   radius={[4, 4, 0, 0]}
                   name="Total Revenue ($)"
                   animationDuration={800}
                 />
                 <Bar 
                   dataKey="loyaltyRevenue" 
-                  fill="#3B82F6" 
+                  fill="#E85A9B" 
                   radius={[4, 4, 0, 0]}
                   name="Loyalty Revenue ($)"
                   animationDuration={1000}
@@ -537,7 +537,7 @@ const DashboardHome = () => {
                 <Line 
                   type="monotone" 
                   dataKey="netProfit" 
-                  stroke="#10B981" 
+                  stroke="#D946EF" 
                   strokeWidth={3}
                   name="Net Profit ($)"
                   animationDuration={1200}
@@ -586,14 +586,14 @@ const DashboardHome = () => {
                 <Tooltip content={renderCustomTooltip} />
                 <Bar 
                   dataKey="signups" 
-                  fill="#1E2A78" 
+                  fill="#E6A85C" 
                   radius={[4, 4, 0, 0]}
                   name="Signups"
                   animationDuration={800}
                 />
                 <Bar 
                   dataKey="rewards" 
-                  fill="#8B5CF6" 
+                  fill="#E85A9B" 
                   radius={[4, 4, 0, 0]}
                   name="Rewards"
                   animationDuration={1000}
@@ -627,7 +627,7 @@ const DashboardHome = () => {
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1E2A78] to-[#3B4B9A] text-white flex items-center justify-center font-medium text-sm shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white flex items-center justify-center font-medium text-sm shadow-lg">
                     {activity.avatar}
                   </div>
                   
@@ -646,7 +646,7 @@ const DashboardHome = () => {
                       <div className="flex flex-col">
                         <p className="text-sm text-gray-600">{activity.action}</p>
                         {activity.reward && (
-                          <p className="text-sm font-medium text-[#1E2A78]">{activity.reward}</p>
+                          <p className="text-sm font-medium text-[#E6A85C]">{activity.reward}</p>
                         )}
                       </div>
                       <div className="text-right">
@@ -657,7 +657,7 @@ const DashboardHome = () => {
                   </div>
                   
                   <button className="opacity-0 group-hover:opacity-100 p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-all duration-200">
-                    <MoreVertical className="h-4 w-4" />
+                    <MoreVertical className="h-4 w-4 group-hover:text-[#E6A85C]" />
                   </button>
                 </div>
               </div>

@@ -188,7 +188,7 @@ const SupportUI: React.FC = () => {
         </div>
         <button
           onClick={() => setShowCreateTicket(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
         >
           <Plus className="h-4 w-4" />
           New Ticket
@@ -207,7 +207,7 @@ const SupportUI: React.FC = () => {
                 placeholder="Search tickets..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent text-sm"
+                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent text-sm"
               />
             </div>
             
@@ -215,7 +215,7 @@ const SupportUI: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
               >
                 <option value="all">All Status</option>
                 <option value="open">Open</option>
@@ -227,7 +227,7 @@ const SupportUI: React.FC = () => {
               <select
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
-                className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
               >
                 <option value="all">All Priority</option>
                 <option value="urgent">Urgent</option>
@@ -257,7 +257,7 @@ const SupportUI: React.FC = () => {
                     key={ticket.id}
                     onClick={() => setSelectedTicket(ticket)}
                     className={`w-full p-4 text-left hover:bg-gray-50 transition-colors ${
-                      selectedTicket?.id === ticket.id ? 'bg-blue-50 border-r-2 border-[#1E2A78]' : ''
+                      selectedTicket?.id === ticket.id ? 'bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10 border-r-2 border-[#E6A85C]' : ''
                     }`}
                   >
                     <div className="flex items-start justify-between mb-2">
@@ -355,12 +355,12 @@ const SupportUI: React.FC = () => {
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && !sendingMessage && handleSendMessage()}
                     placeholder="Type your message..."
-                    className="flex-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   />
                   <button
                     onClick={handleSendMessage}
                     disabled={sendingMessage || !newMessage.trim()}
-                    className="px-4 py-2 bg-[#1E2A78] text-white rounded-lg hover:bg-[#3B4B9A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                    className="px-4 py-2 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-lg hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                   >
                     {sendingMessage ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -406,7 +406,7 @@ const SupportUI: React.FC = () => {
                   type="text"
                   value={newTicketData.title}
                   onChange={(e) => setNewTicketData({ ...newTicketData, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   placeholder="Brief description of the issue"
                 />
               </div>
@@ -418,7 +418,7 @@ const SupportUI: React.FC = () => {
                 <textarea
                   value={newTicketData.description}
                   onChange={(e) => setNewTicketData({ ...newTicketData, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   placeholder="Detailed description of the issue"
                   rows={4}
                 />
@@ -432,7 +432,7 @@ const SupportUI: React.FC = () => {
                   <select
                     value={newTicketData.priority}
                     onChange={(e) => setNewTicketData({ ...newTicketData, priority: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -448,7 +448,7 @@ const SupportUI: React.FC = () => {
                   <select
                     value={newTicketData.category}
                     onChange={(e) => setNewTicketData({ ...newTicketData, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   >
                     <option value="general">General</option>
                     <option value="technical">Technical Issue</option>
@@ -470,7 +470,7 @@ const SupportUI: React.FC = () => {
               <button
                 onClick={handleCreateTicket}
                 disabled={createLoading}
-                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {createLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />

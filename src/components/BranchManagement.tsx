@@ -247,7 +247,7 @@ const BranchManagement: React.FC = () => {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
         >
           <Plus className="h-4 w-4" />
           Add Branch
@@ -263,7 +263,7 @@ const BranchManagement: React.FC = () => {
             placeholder="Search branches..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
           />
         </div>
       </div>
@@ -284,7 +284,7 @@ const BranchManagement: React.FC = () => {
           {branches.length === 0 && (
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-6 py-3 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+              className="px-6 py-3 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
             >
               Create Your First Branch
             </button>
@@ -321,7 +321,7 @@ const BranchManagement: React.FC = () => {
                         <Building className="h-6 w-6 text-blue-600" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 group-hover:text-[#1E2A78] transition-colors">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-[#E6A85C] transition-colors">
                           {branch.name}
                         </h3>
                         <div className="flex items-center gap-2 mt-1">
@@ -487,7 +487,7 @@ const BranchManagement: React.FC = () => {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   placeholder="e.g., Sheikh Zayed Branch"
                 />
               </div>
@@ -500,7 +500,7 @@ const BranchManagement: React.FC = () => {
                   type="text"
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   placeholder="e.g., Sheikh Zayed Road, Dubai"
                 />
               </div>
@@ -515,7 +515,7 @@ const BranchManagement: React.FC = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={formData.staff_password}
                       onChange={(e) => setFormData({ ...formData, staff_password: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent pr-10"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent pr-10"
                       placeholder="Enter staff password"
                     />
                     <button
@@ -545,7 +545,7 @@ const BranchManagement: React.FC = () => {
                   id="is_active"
                   checked={formData.is_active}
                   onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                  className="w-4 h-4 text-[#1E2A78] border-gray-300 rounded focus:ring-[#1E2A78]"
+                  className="w-4 h-4 text-[#E6A85C] border-gray-300 rounded focus:ring-[#E6A85C]"
                 />
                 <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
                   Active (staff can access this branch)
@@ -567,7 +567,7 @@ const BranchManagement: React.FC = () => {
               <button
                 onClick={editingBranch ? handleUpdateBranch : handleCreateBranch}
                 disabled={formLoading}
-                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {formLoading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

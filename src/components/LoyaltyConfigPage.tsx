@@ -129,7 +129,7 @@ const LoyaltyConfigPage: React.FC = () => {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50"
           >
             {saving ? (
               <RefreshCw className="h-4 w-4 animate-spin" />
@@ -220,7 +220,7 @@ const LoyaltyConfigPage: React.FC = () => {
                   blanketMode: { ...config.blanketMode, enabled: !config.blanketMode.enabled }
                 })}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  config.blanketMode.enabled ? 'bg-[#1E2A78]' : 'bg-gray-200'
+                  config.blanketMode.enabled ? 'bg-gradient-to-r from-[#E6A85C] to-[#E85A9B]' : 'bg-gray-200'
                 }`}
               >
                 <span
@@ -242,7 +242,7 @@ const LoyaltyConfigPage: React.FC = () => {
                     })}
                     className={`p-4 rounded-xl border-2 text-center transition-all ${
                       config.blanketMode.type === 'smart'
-                        ? 'border-[#1E2A78] bg-blue-50'
+                        ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -258,7 +258,7 @@ const LoyaltyConfigPage: React.FC = () => {
                     })}
                     className={`p-4 rounded-xl border-2 text-center transition-all ${
                       config.blanketMode.type === 'manual'
-                        ? 'border-[#1E2A78] bg-blue-50'
+                        ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -274,7 +274,7 @@ const LoyaltyConfigPage: React.FC = () => {
                     })}
                     className={`p-4 rounded-xl border-2 text-center transition-all ${
                       config.blanketMode.type === 'spend'
-                        ? 'border-[#1E2A78] bg-blue-50'
+                        ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -499,7 +499,7 @@ const LoyaltyConfigPage: React.FC = () => {
             </div>
 
             {/* Preview Results */}
-            <div className="bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] rounded-xl p-4 text-white">
+            <div className="bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-xl p-4 text-white">
               <div className="text-center mb-4">
                 <p className="text-3xl font-bold">{preview.points}</p>
                 <p className="text-sm opacity-90">points earned</p>

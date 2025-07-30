@@ -348,7 +348,7 @@ const MenuItemsPage: React.FC = () => {
           <p className="text-red-600 mb-4">{error}</p>
           <button
             onClick={fetchMenuItems}
-            className="px-6 py-3 bg-[#1E2A78] text-white rounded-lg hover:bg-[#3B4B9A] transition-colors"
+            className="px-6 py-3 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-lg hover:bg-[#3B4B9A] transition-colors"
           >
             Try Again
           </button>
@@ -367,7 +367,7 @@ const MenuItemsPage: React.FC = () => {
         </div>
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
         >
           <Plus className="h-4 w-4" />
           Add Menu Item
@@ -385,7 +385,7 @@ const MenuItemsPage: React.FC = () => {
                 placeholder="Search menu items..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
               />
             </div>
           </div>
@@ -394,7 +394,7 @@ const MenuItemsPage: React.FC = () => {
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
             >
               <option value="all">All Categories</option>
               {categories.map(category => (
@@ -405,7 +405,7 @@ const MenuItemsPage: React.FC = () => {
             <select
               value={filterLoyaltyMode}
               onChange={(e) => setFilterLoyaltyMode(e.target.value)}
-              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+              className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
             >
               <option value="all">All Loyalty Modes</option>
               <option value="smart">Smart Auto</option>
@@ -432,7 +432,7 @@ const MenuItemsPage: React.FC = () => {
           {menuItems.length === 0 && (
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-6 py-3 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200"
+              className="px-6 py-3 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200"
             >
               Create Your First Menu Item
             </button>
@@ -469,7 +469,7 @@ const MenuItemsPage: React.FC = () => {
                         <CategoryIcon className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900 group-hover:text-[#1E2A78] transition-colors">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-[#E6A85C] transition-colors">
                           {item.name}
                         </h3>
                         <div className="flex items-center gap-2 mt-1">
@@ -518,7 +518,7 @@ const MenuItemsPage: React.FC = () => {
                     {item.loyalty_mode !== 'none' && (
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-gray-600">Points (Bronze)</span>
-                        <span className="font-semibold text-[#1E2A78]">{previewPoints} pts</span>
+                        <span className="font-semibold text-[#E6A85C]">{previewPoints} pts</span>
                       </div>
                     )}
                   </div>
@@ -585,7 +585,7 @@ const MenuItemsPage: React.FC = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                     placeholder="e.g., Chicken Shawarma"
                   />
                 </div>
@@ -597,7 +597,7 @@ const MenuItemsPage: React.FC = () => {
                   <textarea
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                     placeholder="Describe the item"
                     rows={3}
                   />
@@ -610,7 +610,7 @@ const MenuItemsPage: React.FC = () => {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                   >
                     {categories.map(category => (
                       <option key={category.value} value={category.value}>
@@ -629,7 +629,7 @@ const MenuItemsPage: React.FC = () => {
                       type="number"
                       value={formData.cost_price}
                       onChange={(e) => setFormData({ ...formData, cost_price: parseFloat(e.target.value) || 0 })}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                       min="0"
                       step="0.01"
                     />
@@ -643,7 +643,7 @@ const MenuItemsPage: React.FC = () => {
                       type="number"
                       value={formData.selling_price}
                       onChange={(e) => setFormData({ ...formData, selling_price: parseFloat(e.target.value) || 0 })}
-                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                       min="0"
                       step="0.01"
                     />
@@ -668,7 +668,7 @@ const MenuItemsPage: React.FC = () => {
                       onClick={() => setFormData({ ...formData, loyalty_mode: 'smart' })}
                       className={`p-3 rounded-lg border-2 text-center transition-all ${
                         formData.loyalty_mode === 'smart'
-                          ? 'border-[#1E2A78] bg-blue-50'
+                          ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -681,7 +681,7 @@ const MenuItemsPage: React.FC = () => {
                       onClick={() => setFormData({ ...formData, loyalty_mode: 'manual' })}
                       className={`p-3 rounded-lg border-2 text-center transition-all ${
                         formData.loyalty_mode === 'manual'
-                          ? 'border-[#1E2A78] bg-blue-50'
+                          ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -694,7 +694,7 @@ const MenuItemsPage: React.FC = () => {
                       onClick={() => setFormData({ ...formData, loyalty_mode: 'none' })}
                       className={`p-3 rounded-lg border-2 text-center transition-all ${
                         formData.loyalty_mode === 'none'
-                          ? 'border-[#1E2A78] bg-blue-50'
+                          ? 'border-[#E6A85C] bg-gradient-to-r from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                     >
@@ -720,7 +720,7 @@ const MenuItemsPage: React.FC = () => {
                           type="number"
                           value={formData.profit_allocation_percent}
                           onChange={(e) => setFormData({ ...formData, profit_allocation_percent: parseFloat(e.target.value) || 0 })}
-                          className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                          className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                           min="0"
                           max="100"
                           step="1"
@@ -797,7 +797,7 @@ const MenuItemsPage: React.FC = () => {
                           type="number"
                           value={formData.fixed_points}
                           onChange={(e) => setFormData({ ...formData, fixed_points: parseFloat(e.target.value) || 0 })}
-                          className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                          className="w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                           min="0"
                           step="1"
                         />
@@ -850,7 +850,7 @@ const MenuItemsPage: React.FC = () => {
                       <select
                         value={previewTier}
                         onChange={(e) => setPreviewTier(e.target.value)}
-                        className="px-3 py-1 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#1E2A78] focus:border-transparent"
+                        className="px-3 py-1 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#E6A85C] focus:border-transparent"
                       >
                         {tiers.map(tier => (
                           <option key={tier.value} value={tier.value}>
@@ -859,7 +859,7 @@ const MenuItemsPage: React.FC = () => {
                         ))}
                       </select>
                     </div>
-                    <div className="bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] p-4 rounded-xl text-white">
+                    <div className="bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] p-4 rounded-xl text-white">
                       <div className="text-center">
                         <p className="text-3xl font-bold mb-1">{getPreviewPoints()}</p>
                         <p className="text-sm opacity-90">points per item</p>
@@ -895,7 +895,7 @@ const MenuItemsPage: React.FC = () => {
               <button
                 onClick={editingItem ? handleUpdateItem : handleCreateItem}
                 disabled={formLoading}
-                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#1E2A78] to-[#3B4B9A] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 px-4 bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] text-white rounded-xl hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {formLoading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

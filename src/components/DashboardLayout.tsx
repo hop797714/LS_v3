@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import {
   Home,
@@ -16,11 +16,7 @@ import {
   BarChart3
 } from 'lucide-react';
 
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-}
-
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,16 +29,21 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
-    { name: 'Menu Items', href: '/menu-items', icon: ChefHat },
-    { name: 'Rewards', href: '/rewards', icon: Gift },
+    { name: 'Menu Items', href: '/dashboard/menu-items', icon: ChefHat },
+    { name: 'Rewards', href: '/dashboard/rewards', icon: Gift },
     { name: 'Customers', href: '/customers', icon: Users },
-    { name: 'Branches', href: '/branches', icon: MapPin },
-    { name: 'Loyalty Config', href: '/loyalty-config', icon: Settings },
+    { name: 'Branches', href: '/dashboard/branches', icon: MapPin },
+    { name: 'Loyalty Config', href: '/dashboard/loyalty-config', icon: Settings },
     { name: 'Analytics', href: '/analytics', icon: BarChart3 },
-    { name: 'Support', href: '/support', icon: HeadphonesIcon },
+    { name: 'Support', href: '/dashboard/support', icon: HeadphonesIcon },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  const isActive = (href: string) => {
+    if (href === '/dashboard') {
+      return location.pathname === '/dashboard';
+    }
+    return location.pathname === href;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -52,10 +53,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="fixed inset-y-0 left-0 flex w-64 flex-col bg-white shadow-xl">
           <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
             <div className="flex items-center space-x-3">
-              <img src="/image.png" alt="VOYA" className="w-8 h-8" />
-              <span className="text-xl font-bold bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] bg-clip-text text-transparent font-['Space_Grotesk']">
-                VOYA
-              </span>
+              <img src="/image.png" alt="VOYA" className="h-8 w-auto object-contain" />
             </div>
             <button
               onClick={() => setSidebarOpen(false)}
@@ -103,10 +101,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex flex-col flex-grow bg-white border-r border-gray-200 shadow-sm">
           <div className="flex h-16 items-center px-4 border-b border-gray-200">
             <div className="flex items-center space-x-3">
-              <img src="/image.png" alt="VOYA" className="w-10 h-10" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#E6A85C] via-[#E85A9B] to-[#D946EF] bg-clip-text text-transparent font-['Space_Grotesk']">
-                VOYA
-              </span>
+              <img src="/image.png" alt="VOYA" className="h-10 w-auto object-contain" />
             </div>
           </div>
           <nav className="flex-1 px-4 py-4 space-y-2">
@@ -195,7 +190,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Page content */}
         <main className="py-6">
           <div className="px-4 sm:px-6 lg:px-8">
-            {children}
+            <div className="max-w-7xl mx-auto">
+              <Outlet />
+            </div>
           </div>
         </main>
       </div>

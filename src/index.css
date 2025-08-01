@@ -191,55 +191,11 @@ body {
   100% { transform: rotate(360deg) scale(1); }
 }
 /* Custom animations and styles */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(30, 42, 120, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(30, 42, 120, 0.6); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes pulseSlide {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes voyaShimmer {
-  0% { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(200%) skewX(-15deg); }
-}
-
-@keyframes voyaPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
 .voya-skeleton {
   position: relative;
   overflow: hidden;
-  background-color: #f3f4f6; /* Tailwind gray-100 */
-  border-radius: 0.5rem; /* Matches rounded-lg */
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
 }
 
 .voya-skeleton::after {
@@ -266,7 +222,6 @@ body {
     left: 150%;
   }
 }
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

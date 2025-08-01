@@ -206,6 +206,21 @@ body {
   100% { background-position: 200% 0; }
 }
 
+@keyframes pulseSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes voyaShimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes voyaPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -218,6 +233,51 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
+}
+
+/* Premium Loading Skeletons */
+.voya-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: voyaShimmer 1.5s ease-in-out infinite;
+}
+
+.voya-skeleton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 168, 92, 0.1),
+    rgba(232, 90, 155, 0.1),
+    rgba(217, 70, 239, 0.1),
+    transparent
+  );
+  animation: pulseSlide 2s ease-in-out infinite;
+}
+
+.voya-skeleton-dark {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200% 100%;
+  animation: voyaShimmer 1.5s ease-in-out infinite;
+}
+
+.voya-skeleton-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(230, 168, 92, 0.2),
+    rgba(232, 90, 155, 0.2),
+    rgba(217, 70, 239, 0.2),
+    transparent
+  );
+  animation: pulseSlide 2s ease-in-out infinite;
 }
 
 /* Smooth scrolling */

@@ -65,26 +65,26 @@ const DashboardHome = () => {
   };
   if (loading) {
     return (
-      <div className="space-y-6">
+      <div className="animate-pulse space-y-6">
         <div className="flex items-center justify-between">
-          <div className="h-8 voya-skeleton rounded-xl w-64"></div>
-          <div className="h-10 voya-skeleton rounded-xl w-32"></div>
+          <div className="h-8 bg-gray-200 rounded w-64"></div>
+          <div className="h-10 bg-gray-200 rounded w-32"></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
-              <div className="h-6 voya-skeleton rounded-lg mb-4"></div>
-              <div className="h-8 voya-skeleton rounded-lg mb-2"></div>
-              <div className="h-4 voya-skeleton rounded-lg"></div>
+            <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
+              <div className="h-6 bg-gray-200 rounded mb-4"></div>
+              <div className="h-8 bg-gray-200 rounded mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <div className="xl:col-span-2 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
-            <div className="h-80 voya-skeleton rounded-xl"></div>
+          <div className="xl:col-span-2 bg-white rounded-2xl p-6 border border-gray-200">
+            <div className="h-80 bg-gray-200 rounded"></div>
           </div>
-          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
-            <div className="h-64 voya-skeleton rounded-xl"></div>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200">
+            <div className="h-64 bg-gray-200 rounded"></div>
           </div>
         </div>
       </div>
@@ -128,10 +128,10 @@ const DashboardHome = () => {
 
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
           <div className="text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <img src="/image.png" alt="VOYA" className="h-10 w-auto object-contain" />
+            <div className="w-16 h-16 bg-gradient-to-br from-[#E6A85C] via-[#E85A9B] to-[#D946EF] rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Plus className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2 font-['Space_Grotesk']">Set Up Your Restaurant</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Set Up Your Restaurant</h2>
             <p className="text-gray-600 mb-6">
               It looks like your restaurant profile isn't set up yet. This might happen if you signed up recently.
               Please contact support or try refreshing the page.
@@ -153,7 +153,7 @@ const DashboardHome = () => {
             return (
               <div
                 key={stat.name}
-                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm"
+                className="bg-white rounded-2xl p-6 border border-gray-200"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-[#E6A85C]/10 via-[#E85A9B]/10 to-[#D946EF]/10 text-[#E6A85C]">
@@ -165,7 +165,7 @@ const DashboardHome = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-gray-500 mb-1">{stat.name}</h3>
-                  <p className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1 font-['Space_Grotesk']">{stat.value}</p>
+                  <p className="text-2xl lg:text-3xl font-bold text-gray-900 mb-1">{stat.value}</p>
                   <p className="text-xs text-gray-500">{stat.description}</p>
                 </div>
               </div>

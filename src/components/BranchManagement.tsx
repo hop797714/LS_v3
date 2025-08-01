@@ -200,25 +200,24 @@ const BranchManagement: React.FC = () => {
   );
 
   if (loading) {
-  return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="voya-skeleton h-8 w-48"></div>
-        <div className="voya-skeleton h-10 w-32"></div>
+    return (
+      <div className="animate-pulse space-y-6">
+        <div className="flex items-center justify-between">
+          <div className="h-8 bg-gray-200 rounded w-48"></div>
+          <div className="h-10 bg-gray-200 rounded w-32"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
+              <div className="h-6 bg-gray-200 rounded mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[...Array(3)].map((_, i) => (
-          <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm space-y-3">
-            <div className="voya-skeleton h-6 w-1/2"></div>
-            <div className="voya-skeleton h-4 w-full"></div>
-            <div className="voya-skeleton h-4 w-5/6"></div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
+    );
+  }
 
   if (error) {
     return (
